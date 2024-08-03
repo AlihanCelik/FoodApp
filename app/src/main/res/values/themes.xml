@@ -12,4 +12,9 @@
         <item name="android:statusBarColor">@color/primary</item>
         <item name="android:windowLightStatusBar">false</item>
     </style>
+    <style name="image_color">
+        <item name="android:tint">@color/g_black</item>
+    </style>
+
+
 </resources>

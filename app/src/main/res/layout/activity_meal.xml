@@ -24,8 +24,10 @@
                 android:id="@+id/img_meal_detail">
             </ImageView>
             <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
+                app:navigationIcon="@drawable/baseline_arrow_back_24"
                 app:layout_collapseMode="pin">
             </androidx.appcompat.widget.Toolbar>
         </com.google.android.material.appbar.CollapsingToolbarLayout>
@@ -35,6 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/baseline_favorite_border_24"
+        android:id="@+id/btnAddToFav"
         android:backgroundTint="@color/accent"
         android:tint="@color/white"
         app:borderWidth="0dp"
@@ -58,25 +61,57 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_margin="5dp">
-                <TextView
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="15dp">
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Category : Beef"
-                    android:textStyle="bold"
-                    android:layout_gravity="center"
-                    android:drawableLeft="@drawable/baseline_category_24"
-                    android:layout_weight="1">
-                </TextView>
-                <TextView
+                    android:layout_weight="1"
+                    android:layout_marginLeft="10dp"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/baseline_category_24"
+                        style="@style/image_color">
+                    </ImageView>
+                    <TextView
+                        android:id="@+id/category"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Category : Beef"
+                        android:layout_marginLeft="10dp"
+                        android:textStyle="bold"
+                        android:layout_gravity="center"
+                       >
+                    </TextView>
+                </LinearLayout>
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Area : Türkiye"
-                    android:textStyle="bold"
-                    android:layout_gravity="center"
-                    android:drawableLeft="@drawable/baseline_location_pin_24"
-                    android:layout_weight="1">
-                </TextView>
+                    android:layout_weight="1"
+                    android:layout_marginRight="70dp"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        style="@style/image_color"
+                        android:src="@drawable/baseline_location_pin_24">
+                    </ImageView>
+
+                    <TextView
+                        android:id="@+id/area"
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:text="Category : Beef"
+                        android:textStyle="bold"></TextView>
+                </LinearLayout>
+
+
             </LinearLayout>
             <TextView
                 android:id="@+id/txt"
@@ -96,9 +131,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
+                android:layout_marginBottom="50dp"
                 android:layout_marginRight="15dp"
                 android:layout_marginLeft="15dp"
-
                 app:layout_constraintTop_toBottomOf="@+id/txt"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -111,6 +146,7 @@
         android:layout_height="40dp"
         android:layout_gravity="bottom|center"
         android:src="@drawable/youtube"
+        android:id="@+id/youtube_btn"
         android:layout_marginBottom="10dp">
 
     </ImageView>
@@ -120,6 +156,7 @@
         android:indeterminate="true"
         app:layout_anchor="@id/appbar"
         app:layout_anchorGravity="bottom"
+
         android:visibility="gone"
         android:id="@+id/progress_bar">
     </com.google.android.material.progressindicator.LinearProgressIndicator>
