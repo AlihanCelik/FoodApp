@@ -55,4 +55,7 @@ dependencies {
     implementation (libs.converter.gson)
     implementation (libs.glide)
     annotationProcessor (libs.compiler)
+    implementation (libs.androidx.lifecycle.viewmodel.ktx)
+    implementation (libs.androidx.lifecycle.extensions)
+
 }
