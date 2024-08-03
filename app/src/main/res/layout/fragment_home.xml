@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".HomeFragment">
+    tools:context=".fragments.HomeFragment">
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:fillViewport="true"
@@ -72,6 +72,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/text1">
                 <ImageView
+                    android:scaleType="centerCrop"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:id="@+id/img_random_meal"
@@ -93,10 +94,11 @@
                 app:layout_constraintTop_toBottomOf="@id/cardView1">
             </TextView>
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rcw2"
+                android:id="@+id/rcw1"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:paddingRight="20dp"
+                android:scrollbars="none"
                 android:paddingLeft="20dp"
                 android:layout_marginTop="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -104,6 +106,45 @@
                 app:layout_constraintTop_toBottomOf="@id/text2"
                 >
             </androidx.recyclerview.widget.RecyclerView>
+            <TextView
+                android:id="@+id/text3"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_width="match_parent"
+                android:layout_marginTop="15dp"
+                android:layout_height="wrap_content"
+                android:text="Categories"
+                android:textStyle="bold"
+                android:fontFamily="@font/myfont"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rcw1">
+            </TextView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text3">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcw2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scrollbars="none"
+                    android:layout_margin="10dp">
+
+                </androidx.recyclerview.widget.RecyclerView>
+            </com.google.android.material.card.MaterialCardView>
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
