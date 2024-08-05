@@ -57,5 +57,8 @@ dependencies {
     annotationProcessor (libs.compiler)
     implementation (libs.androidx.lifecycle.viewmodel.ktx)
     implementation (libs.androidx.lifecycle.extensions)
+    implementation (libs.androidx.room.runtime)
+    annotationProcessor (libs.androidx.room.compiler)
+
 
 }
