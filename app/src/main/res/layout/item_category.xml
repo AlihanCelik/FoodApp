@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <com.google.android.material.card.MaterialCardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:clickable="true"
         app:cardElevation="5dp"
         app:cardCornerRadius="20dp"
-        android:layout_margin="10dp"
-        android:layout_height="match_parent">
+        android:layout_margin="10dp">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/item_category_img"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:scaleType="centerCrop"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:scaleType="fitCenter"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.473"
@@ -28,7 +28,8 @@
             </ImageView>
 
             <TextView
-                android:layout_width="match_parent"
+                android:id="@+id/item_category_txt"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Category Name"
                 android:gravity="center"
@@ -36,11 +37,10 @@
                 android:paddingBottom="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="20dp"
+                android:textSize="12sp"
                 android:layout_marginLeft="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/item_category_img" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
-
-</LinearLayout>
