@@ -9,10 +9,11 @@ import com.example.foodapp.pojo.CategoryMeals
 
 class PopularFoodAdapter():RecyclerView.Adapter<PopularFoodAdapter.PopularFoodViewHolder>() {
     private var mealsList=ArrayList<CategoryMeals>()
+    lateinit var onItemClick:((CategoryMeals)->Unit)
     class PopularFoodViewHolder(var binding:ItemPopularBinding):RecyclerView.ViewHolder(binding.root)
 
     fun setMeals(maalsList:ArrayList<CategoryMeals>){
-        this.mealsList=mealsList
+        this.mealsList=maalsList
         notifyDataSetChanged()
     }
 
@@ -26,6 +27,9 @@ class PopularFoodAdapter():RecyclerView.Adapter<PopularFoodAdapter.PopularFoodVi
 
     override fun onBindViewHolder(holder: PopularFoodViewHolder, position: Int) {
         Glide.with(holder.itemView).load(mealsList[position].strMealThumb).into(holder.binding.itemPopularImg)
+        holder.itemView.setOnClickListener {
+            onItemClick.invoke(mealsList[position])
+        }
 
     }
 }

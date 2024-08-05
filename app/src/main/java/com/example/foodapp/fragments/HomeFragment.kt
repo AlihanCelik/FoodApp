@@ -15,7 +15,6 @@ import com.example.foodapp.databinding.FragmentHomeBinding
 import com.example.foodapp.pojo.CategoryMeals
 import com.example.foodapp.pojo.Meal
 import com.example.foodapp.viewModel.HomeViewModel
-import kotlin.time.measureTime
 
 
 class HomeFragment : Fragment() {
@@ -52,12 +51,23 @@ class HomeFragment : Fragment() {
         preparePopularItemsRecylerView()
 
         homeMvvm.getRandomMeal()
-
         observerRandomMeal()
         onRandomMealClick()
+
         homeMvvm.getPopularItems()
         observePopularMealLiveData()
+        onPopularItemClick()
 
+    }
+
+    private fun onPopularItemClick() {
+        popularAdpater.onItemClick={meal->
+            val intent=Intent(activity,MealActivity::class.java)
+            intent.putExtra(MEAL_ID,meal.idMeal)
+            intent.putExtra(MEAL_NAME,meal.strMeal)
+            intent.putExtra(MEAL_THUMB,meal.strMealThumb)
+            startActivity(intent)
+        }
     }
 
     private fun preparePopularItemsRecylerView() {
@@ -68,10 +78,9 @@ class HomeFragment : Fragment() {
     }
 
     private fun observePopularMealLiveData() {
-        homeMvvm.observePopularMealLiveData().observe(viewLifecycleOwner) { mealList ->
-            popularAdpater.setMeals(mealList as ArrayList<CategoryMeals>)
-
-        }
+        homeMvvm.observePopularMealLiveData().observe(viewLifecycleOwner
+        ) { mealList->
+            popularAdpater.setMeals(mealList as ArrayList<CategoryMeals>) }
     }
 
     private fun onRandomMealClick(){
