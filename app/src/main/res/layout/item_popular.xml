@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="280dp"
+    android:layout_height="170dp"
+    android:layout_margin="5dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        app:cardElevation="20dp"
+        app:cardCornerRadius="30dp"
+        >
+        <ImageView
+            android:layout_width="match_parent"
+            android:id="@+id/item_popular_img"
+            android:scaleType="centerCrop"
+            android:layout_height="match_parent">
+        </ImageView>
+    </com.google.android.material.card.MaterialCardView>
+
+
+</LinearLayout>
