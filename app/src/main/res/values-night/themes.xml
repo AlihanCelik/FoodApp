@@ -11,12 +11,20 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">@color/primary</item>
         <item name="android:windowLightStatusBar">false</item>
+        <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
        </style>
     <style name="CardViewColor">
         <item name="android:background">#202020</item>
     </style>
     <style name="image_color">
         <item name="android:tint">@color/white</item>
+    </style>
+    <style name="AppBottomSheetDialogTheme"
+        parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModalStyle</item>
+    </style>
+    <style name="AppModalStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bottom_sheet_dialog_shape</item>
     </style>
 
 </resources>
