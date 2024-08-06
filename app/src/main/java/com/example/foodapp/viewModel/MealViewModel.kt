@@ -17,6 +17,7 @@ class MealViewModel(val mealDatabase: MealDatabase):ViewModel() {
     private var mealDetailsLiveData=MutableLiveData<Meal>()
     private var favoritesLiveData=MutableLiveData<List<Meal>>()
 
+
     fun getMealDetail(id:String){
         RetrofitInstance.api.getMealDateails(id).enqueue(object : Callback<MealList> {
             override fun onResponse(call: Call<MealList>, response: Response<MealList>) {

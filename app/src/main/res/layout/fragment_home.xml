@@ -46,6 +46,7 @@
                     android:layout_weight="1"></Space>
 
                 <ImageView
+                    android:id="@+id/search"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_gravity="center"
