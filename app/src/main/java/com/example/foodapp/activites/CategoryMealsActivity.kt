@@ -30,6 +30,9 @@ class CategoryMealsActivity : AppCompatActivity() {
                 categoryMealAdapter.setMealByCategory(mealsList)
             }
         })
+        binding.backBtn.setOnClickListener {
+            onBackPressed()
+        }
 
 
     }

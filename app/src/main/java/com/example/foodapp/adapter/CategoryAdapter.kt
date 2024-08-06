@@ -6,14 +6,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.foodapp.databinding.ItemCategoryBinding
 import com.example.foodapp.pojo.Category
-import com.example.foodapp.pojo.MealByCategory
+import com.example.foodapp.pojo.Meal
 
 class CategoryAdapter(): RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
-    private var category=ArrayList<Category>()
+    private var category:List<Category> = ArrayList()
     lateinit var onItemClick:((Category)->Unit)
     class CategoryViewHolder(var binding: ItemCategoryBinding):RecyclerView.ViewHolder(binding.root) {
     }
-    fun setCategories(category:ArrayList<Category>){
+    fun setCategories(category: List<Category>){
         this.category=category
         notifyDataSetChanged()
     }
