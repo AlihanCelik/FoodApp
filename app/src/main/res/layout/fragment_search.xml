@@ -29,7 +29,6 @@
             android:hint="Search "
             android:inputType="text"
             android:padding="12dp"
-            android:textColor="@color/white"
             >
         </EditText>
         <ImageView

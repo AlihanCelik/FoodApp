@@ -1,5 +1,6 @@
 package com.example.foodapp.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -12,11 +13,15 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.foodapp.R
 import com.example.foodapp.activites.MainActivity
+import com.example.foodapp.activites.MealActivity
 import com.example.foodapp.adapter.FavoritesMealsAdapter
 import com.example.foodapp.adapter.MealByCategoryAdapter
 import com.example.foodapp.databinding.FragmentCategoriesBinding
 import com.example.foodapp.databinding.FragmentHomeBinding
 import com.example.foodapp.databinding.FragmentSearchBinding
+import com.example.foodapp.fragments.HomeFragment.Companion.MEAL_ID
+import com.example.foodapp.fragments.HomeFragment.Companion.MEAL_NAME
+import com.example.foodapp.fragments.HomeFragment.Companion.MEAL_THUMB
 import com.example.foodapp.pojo.MealByCategory
 import com.example.foodapp.viewModel.HomeViewModel
 import retrofit2.http.Query
@@ -51,7 +56,27 @@ class SearchFragment : Fragment() {
         prepareSearchRecyclerView()
         observeSearchLiveData()
         setupTextWatcher()
+        onMealItemCLick()
+        setupCloseButton()
+
     }
+
+    private fun setupCloseButton() {
+        binding.closeBtn.setOnClickListener {
+            fragmentManager?.popBackStack()
+        }
+    }
+
+    private fun onMealItemCLick() {
+        searchAdapter.onItemClick={meal->
+            val intent= Intent(activity, MealActivity::class.java)
+            intent.putExtra(MEAL_ID,meal.idMeal)
+            intent.putExtra(MEAL_NAME,meal.strMeal)
+            intent.putExtra(MEAL_THUMB,meal.strMealThumb)
+            startActivity(intent)
+        }
+    }
+
     private fun searchMeals(searcQuery:String){
         viewModel.searchMeals(searcQuery)
 

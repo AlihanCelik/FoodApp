@@ -1,5 +1,6 @@
 package com.example.foodapp.activites
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -8,6 +9,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.foodapp.adapter.MealByCategoryAdapter
 import com.example.foodapp.databinding.ActivityCategoryMealsBinding
 import com.example.foodapp.fragments.HomeFragment
+import com.example.foodapp.fragments.HomeFragment.Companion.MEAL_ID
+import com.example.foodapp.fragments.HomeFragment.Companion.MEAL_NAME
+import com.example.foodapp.fragments.HomeFragment.Companion.MEAL_THUMB
 import com.example.foodapp.viewModel.CategooryMealViewModel
 
 class CategoryMealsActivity : AppCompatActivity() {
@@ -33,7 +37,19 @@ class CategoryMealsActivity : AppCompatActivity() {
         binding.backBtn.setOnClickListener {
             onBackPressed()
         }
+        onMealItemClick()
 
+
+    }
+
+    private fun onMealItemClick() {
+        categoryMealAdapter.onItemClick={meal->
+            val intent=Intent(this,MealActivity::class.java)
+            intent.putExtra(MEAL_ID,meal.idMeal)
+            intent.putExtra(MEAL_NAME,meal.strMeal)
+            intent.putExtra(MEAL_THUMB,meal.strMealThumb)
+            startActivity(intent)
+        }
 
     }
 

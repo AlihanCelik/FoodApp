@@ -1,5 +1,6 @@
 package com.example.foodapp.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,8 +13,12 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SnapHelper
 import com.example.foodapp.R
 import com.example.foodapp.activites.MainActivity
+import com.example.foodapp.activites.MealActivity
 import com.example.foodapp.adapter.FavoritesMealsAdapter
 import com.example.foodapp.databinding.FragmentFavoritesBinding
+import com.example.foodapp.fragments.HomeFragment.Companion.MEAL_ID
+import com.example.foodapp.fragments.HomeFragment.Companion.MEAL_NAME
+import com.example.foodapp.fragments.HomeFragment.Companion.MEAL_THUMB
 import com.example.foodapp.viewModel.HomeViewModel
 import com.google.android.material.snackbar.Snackbar
 
@@ -42,6 +47,7 @@ class FavoritesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         observeFavorites()
         prepareFavoritesMealRecyclerView()
+        onMealItemClick()
 
         val itemTouchHelper=object : ItemTouchHelper.SimpleCallback(
             ItemTouchHelper.UP or ItemTouchHelper.DOWN,
@@ -68,6 +74,16 @@ class FavoritesFragment : Fragment() {
         ItemTouchHelper(itemTouchHelper).attachToRecyclerView(binding.favRcw)
 
 
+    }
+
+    private fun onMealItemClick() {
+        favAdapter.onItemClick={meal->
+            val intent= Intent(activity, MealActivity::class.java)
+            intent.putExtra(MEAL_ID,meal.idMeal)
+            intent.putExtra(MEAL_NAME,meal.strMeal)
+            intent.putExtra(MEAL_THUMB,meal.strMealThumb)
+            startActivity(intent)
+        }
     }
 
     private fun prepareFavoritesMealRecyclerView() {
