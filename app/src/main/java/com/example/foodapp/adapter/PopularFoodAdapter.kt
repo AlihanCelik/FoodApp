@@ -10,6 +10,7 @@ import com.example.foodapp.pojo.MealByCategory
 class PopularFoodAdapter():RecyclerView.Adapter<PopularFoodAdapter.PopularFoodViewHolder>() {
     private var mealsList=ArrayList<MealByCategory>()
     lateinit var onItemClick:((MealByCategory)->Unit)
+     var onLongItemClick:((MealByCategory)->Unit)?=null
     class PopularFoodViewHolder(var binding:ItemPopularBinding):RecyclerView.ViewHolder(binding.root)
 
     fun setMeals(maalsList:ArrayList<MealByCategory>){
@@ -29,6 +30,10 @@ class PopularFoodAdapter():RecyclerView.Adapter<PopularFoodAdapter.PopularFoodVi
         Glide.with(holder.itemView).load(mealsList[position].strMealThumb).into(holder.binding.itemPopularImg)
         holder.itemView.setOnClickListener {
             onItemClick.invoke(mealsList[position])
+        }
+        holder.itemView.setOnLongClickListener {
+            onLongItemClick?.invoke(mealsList[position])
+            true
         }
 
     }

@@ -15,10 +15,12 @@ import com.example.foodapp.activites.MealActivity
 import com.example.foodapp.adapter.CategoryAdapter
 import com.example.foodapp.adapter.PopularFoodAdapter
 import com.example.foodapp.databinding.FragmentHomeBinding
+import com.example.foodapp.fragments.bottomsheet.MealBottomSheetFragemnt
 import com.example.foodapp.pojo.Category
 import com.example.foodapp.pojo.MealByCategory
 import com.example.foodapp.pojo.Meal
 import com.example.foodapp.viewModel.HomeViewModel
+import java.util.zip.ZipFile
 
 
 class HomeFragment : Fragment() {
@@ -70,6 +72,15 @@ class HomeFragment : Fragment() {
         observeCategoryLiveData()
         onCategoryItemClick()
 
+        onPopularItemLongClick()
+
+    }
+
+    private fun onPopularItemLongClick() {
+        popularAdpater.onLongItemClick={meal->
+            val mealBottomSheetFragemnt=MealBottomSheetFragemnt.newInstance(meal.idMeal)
+            mealBottomSheetFragemnt.show(childFragmentManager,"Meal Info")
+        }
     }
 
     private fun onCategoryItemClick() {
